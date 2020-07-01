@@ -22,9 +22,16 @@ class MyList
         }
     }
 
-    public function addObj($obj)
+    public function addLast($data)
     {
-        array_push($this->elements, $obj);
+         array_push($this->elements,$data);
+    }
+
+
+
+    public function addObj($index, $data)
+    {
+        array_splice($this->elements,$index,0, $data);
     }
 
     public function removeObj($index)
@@ -45,9 +52,10 @@ class MyList
         }
     }
 
+
     public function clear()
     {
-
+        $this->elements = [];
     }
 
     public function indexOf($obj)
@@ -62,6 +70,11 @@ class MyList
         }else{
             return true;
         }
+    }
+
+    public function addAll($arr)
+    {
+       return array_merge($this->elements,$arr);
     }
 
     public function sort()
