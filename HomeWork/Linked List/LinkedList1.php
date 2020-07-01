@@ -83,7 +83,7 @@ class LinkedList1
     {
         $current = $this->firstNode;
         $previous = $this->firstNode;
-        while ($current->next !== NULL){
+        while ($current->next !== NULL) {
             $previous = $current;
             $current = $current->next;
         }
@@ -98,25 +98,37 @@ class LinkedList1
         $current = $this->firstNode;
         $i = 0;
         while ($i < $index) {
-           $previous = $current;
-           $current = $current->next;
-           $i++;
+            $previous = $current;
+            $current = $current->next;
+            $i++;
         }
         return $previous->data;
     }
 
     public function searchNode($obj)
     {
-        if ($this->firstNode){
-            $current = $this->firstNode;
-            while ($current->next !== NULL){
-                if ($current->data = $obj){
-                    return true;
-                }
+        $current = $this->firstNode;
+        while ($current !== NULL) {
+            if ($current->data === $obj) {
+                return true;
             }
-            return false;
+            $current = $current->next;
         }
+        return false;
     }
+
+    public function indexOf1($str)
+    {
+        $arr = $this->displayList();
+        $arrIndex = [];
+        for ($i = 0; $i < count($arr); $i++) {
+            if ($arr[$i] == $str) {
+                array_push($arrIndex, $i);
+            }
+        }
+        return $arrIndex;
+    }
+
 
     public function displayList()
     {
@@ -132,16 +144,17 @@ class LinkedList1
 
 $list = new LinkedList1();
 $list->addFirst(345);
+$list->addFirst(1);
 $list->addFirst(345);
-$list->addFirst(345);
-$list->addFirst(345);
+$list->addFirst(456);
 $list->addFirst(345);
 $list->addFirst(123);
 $list->addLast(9);
 $list->addNode(2, 678);
-var_dump($list->searchNode(123));
+var_dump($list->searchNode(7));
 $list->removeLast();
 echo "<pre>";
 print_r($list->displayList());
 echo "</pre>";
 echo $list->getNode(6);
+var_dump($list->indexOf1(345));
