@@ -52,7 +52,7 @@ class LinkedList
             $currentNode = $this->_firstNode;
             while ($currentNode !== NULL) {
                 if ($currentNode->data === $data) {
-                    return $currentNode;
+                    return true;
                 }
                 $currentNode = $currentNode->next;
             }
@@ -114,7 +114,7 @@ $BookTitles->insertAtFirst("my first!");
 $BookTitles->insert("Introduction to PHP and Data structures");
 $BookTitles->insert("Programming Intelligence");
 $BookTitles->insert("Programming Intelligence");
-var_dump($BookTitles->searchNode("abc"));
-$BookTitles->deleteFirst();
-$BookTitles->deleteLast();
-$BookTitles->display();
+var_dump($BookTitles->searchNode("my first!"));
+//$BookTitles->deleteFirst();
+//$BookTitles->deleteLast();
+//$BookTitles->display();

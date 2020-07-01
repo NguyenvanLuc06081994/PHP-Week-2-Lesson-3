@@ -15,37 +15,52 @@ class LinkList
         $this->countNode = 0;
     }
 
+    public function getLastNode()
+    {
+        return $this->lastNode;
+    }
+
     public function insertFirst($data)
     {
-        $link = new Node($data);
-        $link->next = $this->firstNode;
-        $this->firstNode = $link;
-
-        if ($this->lastNode = NULL) {
-            $this->lastNode = $link;
+//        $link = new Node($data);
+//        $link->next = $this->firstNode;
+//        $this->firstNode = $link;
+//
+//        if ($this->lastNode === NULL) {
+//            $this->lastNode = $link;
+//        }
+//        $this->countNode++;
+        $newNode = new Node($data);
+        $newNode->next = $this->firstNode;
+        $this->firstNode = $newNode;
+        if ($this->lastNode === NULL) {
+            $this->lastNode = $newNode;
         }
-        $this->countNode = $this->countNode + 1;
+        $this->countNode++;
+
     }
 
     public function insertLast($data)
     {
-        if ($this->firstNode !== NULL) {
-            $link = new Node($data);
-            $this->lastNode->next = $link;
-            $link->next = NULL;
-            $this->lastNode = $link;
+
+        $newNode = new Node($data);
+        if ($this->lastNode !== NULL) {
+            $this->lastNode->next = $newNode;
+            $newNode->next = NULL;
+            $this->lastNode = $newNode;
             $this->countNode++;
-        }else{
+        } else {
             $this->insertFirst($data);
         }
+
     }
 
     public function readList()
     {
         $listData = array();
         $current = $this->firstNode;
-        while ($current!= NULL){
-            array_push($listData,$current->readNode());
+        while ($current != NULL) {
+            array_push($listData, $current->readNode());
             $current = $current->next;
         }
         return $listData;
